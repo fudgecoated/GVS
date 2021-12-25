@@ -14,10 +14,11 @@ void setup() {
 
 void loop() {
 
-  if (Serial.available()) 
+  if (Serial3.available()) 
   {
+    Serial.println(Serial3.readString());
 
-    Serial.println(Serial.read());
   }
 
 }
+
