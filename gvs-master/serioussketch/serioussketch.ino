@@ -31,30 +31,50 @@ void read_string()
 
 void setup() {
   // put your setup code here, to run once:
+
   Serial.begin(115200);
   Serial3.begin(115200);
   IMU.begin();
+  // analogWriteResolution(12);
+
+
 }
 
 
 void loop() {
   float* arrayValues[7];
   IMU.readSensor();
-  gY = IMU.getGyroY_rads();  
-  gX = IMU.getGyroX_rads();
-  gZ = IMU.getGyroZ_rads();
-  aX = IMU.getAccelX_mss(); 
-  aY = IMU.getAccelY_mss(); 
-  aZ = IMU.getAccelZ_mss();
-  // float somevalue = IMU.getGyroY_rads(;
-  // Serial.println(somevalue, 6);
+  // gY = IMU.getGyroY_rads();  
+  // gX = IMU.getGyroX_rads();
+  // gZ = IMU.getGyroZ_rads();
+  // aX = IMU.getAccelX_mss(); 
+  // aY = IMU.getAccelY_mss(); 
+  // aZ = IMU.getAccelZ_mss();
   read_string();  
-  assign_imu(&gY); 
+  analogWrite(DAC0, 0);
+  analogWrite(DAC1, 0);
+  delay(10000);
+  analogWrite(DAC0, 254);
+  delay(10000);
+  // assign_imu(&gX, &gY, &gZ, &aX, &aY, &aZ); 
 }
 
-void assign_imu(float& gY) { 
 
+void assign_imu(float* gX, float* gY, float* gZ, float* aX, float* aY , float* aZ) { 
+
+  Serial.print("gyro x: ");
+  Serial.println(*gX);
+  Serial.print("gyro y: ");
   Serial.println(*gY);
+  Serial.print("gyro z: ");
+  Serial.println(*gZ);
+  Serial.print("accel x: ");
+  Serial.println(*aX);
+  Serial.print("accel y: ");
+  Serial.println(*aY);
+  Serial.print("accel z: ");
+  Serial.println(*aZ);
+  delay(1000);
 }
 
 
