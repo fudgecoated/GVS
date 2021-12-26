@@ -11,13 +11,13 @@ void sendFloat(float* data){
 
 void sendPackage(float* gyroX, float* gyroY, float* gyroZ, float* accelX, float* accelY, float* accelZ, float* voltage, unsigned long* timeStamp){
   byte* byteData1 = (byte*)(timeStamp);
-  byte* byteData2 = (byte*)(gyroX);
-  byte* byteData3 = (byte*)(gyroZ);
-  byte* byteData4 = (byte*)(accelX);
-  byte* byteData5 = (byte*)(accelY);
-  byte* byteData6 = (byte*)(accelZ);
-  byte* byteData7 = (byte*)(voltage);
-  byte* byteData8 = (byte*)(gyroY);
+  byte* byteData2 = (byte*)(voltage);
+  byte* byteData3 = (byte*)(gyroX);
+  byte* byteData4 = (byte*)(gyroY);
+  byte* byteData5 = (byte*)(gyroZ);
+  byte* byteData6 = (byte*)(accelX);
+  byte* byteData7 = (byte*)(accelY);
+  byte* byteData8 = (byte*)(accelZ);
   byte buf[32] = {byteData1[0], byteData1[1], byteData1[2], byteData1[3],
                  byteData2[0], byteData2[1], byteData2[2], byteData2[3],
                  byteData3[0], byteData3[1], byteData3[2], byteData3[3],
